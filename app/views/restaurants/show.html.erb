@@ -1,0 +1,32 @@
+<p id="notice"><%= flash[:notice] %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @restaurant.name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @restaurant.address %>
+</p>
+
+<p>
+  <strong>Rating:</strong>
+  <%= @restaurant.phone_number %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @restaurant.category %>
+</p>
+
+<%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
+<%= link_to 'Back', restaurants_path %>
+
+<h4>Reviews:</h4>
+<ul>
+  <% @restaurant.reviews.each do |review| %>
+    <li><%= review.content %> | <%= link_to "delete", review_path(review), method: :delete, data: { confirm: "Are you sure?" } %></li>
+  <% end %>
+</ul>
+<%= link_to "Create review", new_restaurant_review_path(@restaurant), class: "btn btn-primary" %>
